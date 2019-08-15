@@ -41,7 +41,12 @@ class CustomDataset(data.Dataset):
 		if self.args.noise_aug:
 			img = transforms.random_noise_aug(img, self.args.noise)
 
-		item = {'img': img}  # TODO
+		if self.args.template_debug:
+			label = 1
+		else:
+			pass  # FIXME
+
+		item = {'img': img, 'label': label}  # TODO
 
 		return item
 

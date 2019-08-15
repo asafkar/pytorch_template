@@ -7,13 +7,11 @@ import torch.nn as nn
 # i.e. sentences and labels, images and categories, etc...
 # TODO implement this according to data
 def parse_input(args, sample):
-    # img, label = sample['img'], sample['label']
-    # if args.cuda:
-    #     img, label = img.cuda(), label.cuda()
-    # data = {'img': img, 'label': label}
-    # return data
     if args.template_debug:  # FIXME
-        pass
+        img, label = sample['img'], sample['label']
+        if args.cuda:
+            img, label = img.cuda(), label.cuda()
+        return img, label
     else:
         pass
 
