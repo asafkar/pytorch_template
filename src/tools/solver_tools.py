@@ -10,6 +10,8 @@ class Criterion(object):
         self.loss = None
         if args.normal_loss == 'mse':
             self.loss_criterion = torch.nn.MSELoss()
+        elif args.normal_loss == 'ce':
+            self.loss_criterion = torch.nn.CrossEntropyLoss()
         else:
             raise Exception("Unknown/Unsupported Loss '{}'".format(args.normal_loss))
         if args.cuda:
@@ -17,8 +19,10 @@ class Criterion(object):
 
     def forward(self, output, target):
         if self.normal_loss == 'mse':
-            self.loss = self.normal_w * self.loss_criterion(output, target)
-        return self.loss.item()
+            self.loss = self.normal_w * self.loss_criterion(output, target.float())
+        elif self.normal_loss == 'ce':
+            self.loss = self.normal_w * self.loss_criterion(output, target.long())
+        return {'loss': self.loss.item()}
 
     def backward(self):
         self.loss.backward()

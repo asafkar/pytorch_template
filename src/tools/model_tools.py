@@ -35,8 +35,11 @@ def save_checkpoint(save_path, epoch=-1, model=None, optimizer=None, records=Non
 
 
 # TODO - add blocks which are repeated here. Example:
-def output_conv(cin, cout, k=3, stride=1, pad=1):
-    return nn.Sequential(nn.Conv2d(cin, cout, kernel_size=k, stride=stride, padding=pad, bias=True))
+def fc(args, cin):
+    if args.normal_loss == 'mse':
+        return nn.Linear(cin, 1)
+    else:
+        return nn.Linear(cin, 2)
 
 
 

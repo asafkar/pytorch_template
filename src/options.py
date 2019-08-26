@@ -77,17 +77,15 @@ class TrainOptions(BaseOptions):
 		self.parser.add_argument('--beta_1', default=0.9, type=float, help='adam')
 		self.parser.add_argument('--beta_2', default=0.999, type=float, help='adam')
 		self.parser.add_argument('--momentum', default=0.9, type=float, help='sgd')
-		self.parser.add_argument('--batch', default=32, type=int)
+		self.parser.add_argument('--batch', default=4, type=int)
 		self.parser.add_argument('--val_batch', default=8, type=int)
 
 		# default size for cropping, if crop is True
 		self.parser.add_argument('--crop_h', default=32, type=int)
 		self.parser.add_argument('--crop_w', default=32, type=int)
 
-
-
 		# Loss Arguments
-		self.parser.add_argument('--normal_loss', default='mse', help='mse')
+		self.parser.add_argument('--normal_loss', default='ce', help='mse|ce')
 		self.parser.add_argument('--normal_w', default=1)
 
 		# model Arguments

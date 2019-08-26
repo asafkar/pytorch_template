@@ -5,7 +5,7 @@ from tools import model_tools
 def build_model(args):
 	if args.model == 'custom_model':
 		from models.user_model import SomeModule
-		model = SomeModule(args.use_batchnorm, 3)
+		model = SomeModule(args, 32)
 	else:
 		raise Exception("Unknown/Unsupported Model '{}'".format(args.model))
 

@@ -9,9 +9,8 @@ def custom_dataloader(args):
 	else:
 		raise Exception('Unknown dataset: {}'.format(args.dataset))
 
-	train_loader = torch.utils.data.DataLoader(train_set, batch_size=args.batch,
-			num_workers=args.workers, pin_memory=args.cuda, shuffle=True)
-	test_loader = torch.utils.data.DataLoader(val_set, batch_size=args.val_batch,
-			num_workers=args.workers, pin_memory=args.cuda, shuffle=False)
+	train_loader = torch.utils.data.DataLoader(train_set, batch_size=args.batch, num_workers=args.workers,
+												pin_memory=args.cuda, shuffle=True)
+	test_loader = torch.utils.data.DataLoader(val_set, batch_size=args.val_batch, num_workers=args.workers,
+												pin_memory=args.cuda, shuffle=True)
 	return train_loader, test_loader
-
