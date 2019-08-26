@@ -27,7 +27,8 @@ class BaseOptions(object):
 		# Device Arguments
 		self.parser.add_argument('--cuda', default=True, action='store_false')
 		self.parser.add_argument('--multi_gpu', default=False, action='store_true')
-		self.parser.add_argument('--workers', default=8, type=int)
+		self.parser.add_argument('--workers', default=0, type=int)  # FIXME! doesn't work on windows, set to 0
+
 		self.parser.add_argument('--seed', default=0, type=int)
 
 		# Model Arguments
